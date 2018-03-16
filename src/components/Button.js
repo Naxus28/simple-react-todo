@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // ref is used on uncontrolled components to collect form data
 // https://reactjs.org/docs/uncontrolled-components.html
@@ -22,6 +23,10 @@ class Button extends React.Component {
           </React.Fragment>
   }
 }
+
+Button.propTypes = {
+  addTodo: PropTypes.func
+};
 
 
 export default Button;

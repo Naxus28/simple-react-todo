@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // the callback pattern (with the .bind) is more verbose than using an arrow function in the 
 // render method (i.e. onClick={() => this.props.toggleTodotodo.item, todoId)}) but it is more 
@@ -21,7 +22,8 @@ class Todo extends React.Component {
   }
   
   render() {
-    const { todo } = this.props;
+    const todo = this.props.todo;
+
     return <li>
               <span onClick={this.handleToggle} 
                className={todo.completed ? 'completed' : ''}>{todo.item}</span>
@@ -29,5 +31,10 @@ class Todo extends React.Component {
            </li>
   }
 }
+
+Todo.propTypes = {
+  toggleTodo: PropTypes.func,
+  deleteTodo: PropTypes.func
+};
 
 export default Todo;
