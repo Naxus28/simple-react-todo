@@ -1,0 +1,72 @@
+.todo-wrapper {
+  padding: 30px;
+}
+
+.todo-wrapper ol {
+  text-align: left;
+}
+
+.todo-wrapper ol li {
+  margin-bottom: 1rem;
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
+label {
+  display: block;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+li span:first-child {
+  cursor: default;
+  -webkit-touch-callout: none; /* prevents text from being highlighted when clicked */
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+} 
+
+li span:nth-child(2) {
+  padding: 0 3px;
+  margin-left: 5px;
+  text-align: center;
+  color: red;
+  background: #fbd1d1;
+  cursor: pointer;
+  border: 1px solid red;
+  border-radius: 3px;
+}
+
+button {
+  margin-left: 5px;
+  background: #5d99ce;
+  color: white;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all .3s ease;
+}
+
+button:hover{
+  background: #315c82;
+}
+
+input {
+  width: 15%;
+  border: 1px solid #5d99ce;
+}
+
+input,
+button {
+  padding: 5px;
+}
+
+button {
+  border: none;
+}
