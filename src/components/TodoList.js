@@ -50,7 +50,7 @@ class TodoList extends React.Component {
       {
         item: todo,
         completed: false,
-        id: todos[todos.length-1].id + 1 // get the last id and add 1
+        id: (todos.length && todos[todos.length-1].id + 1) || 1
       }
     ]; 
     
