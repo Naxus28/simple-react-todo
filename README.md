@@ -27,7 +27,7 @@ $ cd simple-react-todo
 
 $ npm install #installs dependencies
 
-$ npm run build #builds app
+$ npm run build #builds app for production
 
 $ npm run start #serves app (http://localhost:3000/)
 ```
