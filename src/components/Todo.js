@@ -22,17 +22,24 @@ class Todo extends React.Component {
   }
   
   render() {
-    const todo = this.props.todo;
+    const { todo, 
+            toggleTodo, 
+            deleteTodo 
+          } = this.props;
 
     return <li>
-              <span onClick={this.handleToggle} 
-               className={todo.completed ? 'completed' : ''}>{todo.item}</span>
-              <span onClick={this.handleDelete}>x</span>
+              <span onClick={toggleTodo && this.handleToggle} 
+               className={todo.completed && toggleTodo ? 'completed' : ''}>{todo.item}</span>
+              { deleteTodo 
+                  && <span onClick={this.handleDelete}>x</span>
+              }
            </li>
   }
 }
 
+
 Todo.propTypes = {
+  todo: PropTypes.object.isRequired,
   toggleTodo: PropTypes.func,
   deleteTodo: PropTypes.func
 };

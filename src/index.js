@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import TodosContainer from './cointainers/TodosContainer';
+import App from './cointainers/App';
 import registerServiceWorker from './registerServiceWorker';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 ReactDOM.render(
-  <TodosContainer />, 
+  <Router>
+    <App />
+  </Router>, 
   document.getElementById('root')
 );
 registerServiceWorker();

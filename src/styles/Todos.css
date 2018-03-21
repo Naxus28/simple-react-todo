@@ -1,12 +1,12 @@
-.todo-wrapper {
+.todos-wrapper {
   padding: 30px;
 }
 
-.todo-wrapper ol {
+.todos-wrapper ol {
   text-align: left;
 }
 
-.todo-wrapper ol li {
+.todos-wrapper ol li {
   margin-bottom: 1rem;
 }
 
