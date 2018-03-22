@@ -27,13 +27,13 @@ class Todo extends React.Component {
             deleteTodo 
           } = this.props;
 
-    return <li>
+    return <React.Fragment>
               <span onClick={toggleTodo && this.handleToggle} 
                className={todo.completed && toggleTodo ? 'completed' : ''}>{todo.item}</span>
               { deleteTodo 
                   && <span onClick={this.handleDelete}>x</span>
               }
-           </li>
+           </React.Fragment>
   }
 }
 

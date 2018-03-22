@@ -25,8 +25,12 @@ let setDeletedTodos = (todo) => {
 
 let getCompletedTodos = () => _completedTodos;
 let setCompletedTodos = (todo) => {
-  todo = Object.assign({}, todo, {id: getTodoId(_completedTodos)});
-  _completedTodos = [..._completedTodos, todo];
+  if (todo.completed) {
+    todo = Object.assign({}, todo, {id: getTodoId(_completedTodos)});
+    _completedTodos = [..._completedTodos, todo];
+  } else {
+    _completedTodos = _completedTodos.filter(completedTodo => completedTodo.id !== todo.id)
+  }
 }
 
 

@@ -28,11 +28,12 @@ class TodoList extends React.Component {
       <div className="todos-wrapper">
         <ol>
           {this.props.todos.map(todo => {
-            return <Todo todo={todo} 
-                         key={todo.id} 
-                         todoId={todo.id} 
-                         toggleTodo={this.handleToggle}
-                         deleteTodo={this.handleDelete} />
+            return  <li key={todo.id} >
+                      <Todo todo={todo} 
+                            todoId={todo.id} 
+                            toggleTodo={this.handleToggle}
+                            deleteTodo={this.handleDelete} />
+                    </li>
           })}
         </ol>
       </div>

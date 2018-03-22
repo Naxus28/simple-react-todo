@@ -10,9 +10,10 @@ class DeletedTodos extends React.Component {
       <div className="deleted-todos-wrapper">
         <ol>
          {deletedTodos.length > 0 && deletedTodos.map(deletedTodo => {
-            return <Todo todo={deletedTodo} 
-                         key={deletedTodo.id} 
-                         todoId={deletedTodo.id} />
+            return <li key={deletedTodo.id}>
+                      <Todo todo={deletedTodo} 
+                            todoId={deletedTodo.id} />
+                    </li>
           })}
         </ol>
       </div>
