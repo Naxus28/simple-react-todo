@@ -24,7 +24,8 @@ let setCompletedTodos = (todo) => {
   if (todo.completed) {
     setTodosHelper('completed', todo);
   } else {
-    TODOS.completed = TODOS.completed.filter(completedTodo => completedTodo.id !== todo.id);
+    let filteredTodos = TODOS.completed.filter(completedTodo => completedTodo.id !== todo.id);
+    TODOS.completed = filteredTodos;
   }
 };
 
