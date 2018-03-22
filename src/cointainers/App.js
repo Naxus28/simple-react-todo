@@ -1,10 +1,12 @@
 import React from 'react';
 import TodosContainer from './TodosContainer';
 import DeletedTodosContainer from './DeletedTodosContainer';
-import Header from '../components/Header';
+import NotFound from '../components/NotFound';
+import Header from '../components/ui/Header';
 import {
   Route,
-  Switch
+  Switch,
+  Redirect
 } from 'react-router-dom';
 
 import 'styles/reset.css';
@@ -19,6 +21,8 @@ class App extends React.Component {
                 <Switch>
                   <Route exact path='/' component={TodosContainer}/>
                   <Route path='/deleted' component={DeletedTodosContainer}/>
+                  <Route path='/notfound' component={NotFound}/>
+                  <Redirect to='/notfound' />
                 </Switch>
               </div>
             </React.Fragment>;

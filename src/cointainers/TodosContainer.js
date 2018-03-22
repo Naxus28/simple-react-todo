@@ -7,32 +7,42 @@ import todosUtils from 'utils/todos-utils.js';
 class App extends React.Component {
   constructor(props) {
     super(props);
-
-    // initial sample data
-    this.state = {
-      todos: todosUtils.getTodos()
-    };   
-
     this.handleAdd = this.handleAdd.bind(this);
     this.handleToggle = this.handleToggle.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
   }
 
+  componentWillMount() {
+    this.setState({
+      todos: todosUtils.getTodos()
+    });
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    if (nextState.todos !== this.state.todos) {
+      todosUtils.setTodos(nextState.todos);
+    }
+  }
+
   handleAdd(input) {
-    let todo = input.value;
+    if (!input.value) {
+      alert('Please enter a todo');
+      return;
+    }
+
     let todos = this.state.todos;
 
     let updatedTodos = [
       ...todos, 
       {
-        item: todo,
+        item: input.value,
         completed: false,
-        id: (todos.length && todos[todos.length-1].id + 1) || 1
+        id: todosUtils.getTodoId(todos)
       }
     ]; 
 
     this.setState({
-      todos: (todo && updatedTodos) || this.state.todos
+      todos: updatedTodos
     });
     
     input.value = ''; // reset input
@@ -56,13 +66,13 @@ class App extends React.Component {
   
   handleDelete(todoId) {
     let todos = this.state.todos;
-    let deletedTodo = todos.filter(todo => todo.id === todoId);
+    let deletedTodo = todos.filter(todo => todo.id === todoId)[0];
 
     this.setState({
-      todos: todos.filter(todo => todo.id !== todoId),
+      todos: todos.filter(todo => todo.id !== todoId)
     });
-    console.log(...deletedTodo);
-    todosUtils.setDeletedTodos(...deletedTodo);
+
+    todosUtils.setDeletedTodos(deletedTodo);
   }
 
   render() {
@@ -84,6 +94,5 @@ TodoList.propTypes = {
   handleToggle: PropTypes.func.isRequired,
   handleDelete: PropTypes.func.isRequired
 };
-
 
 export default App;
