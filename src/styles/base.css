@@ -2,8 +2,31 @@ h1 {
   font-size: 24px;
 }
 
+ul {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 5px;
+  overflow: auto;
+  background: #7496FF;
+}
+
+li {
+  flex: 1;
+}
+
+li a {
+  color: white;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
 p, 
 li {
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.add-todo {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
