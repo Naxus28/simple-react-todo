@@ -53,12 +53,15 @@ class App extends React.Component {
      * let todosCopy = this.state.todos.slice();
      * todosCopy[id].completed = !todosCopy[id].completed;
     */
+   
+
     this.setState({
       todos: this.state.todos.map(todo => {
         if (todo.id === id) {
           todo.completed = !todo.completed;
+          todosUtils.setCompletedTodos(todo);
         } 
-        
+
         return todo;
       })
     });

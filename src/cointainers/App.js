@@ -1,6 +1,7 @@
 import React from 'react';
 import TodosContainer from './TodosContainer';
 import DeletedTodosContainer from './DeletedTodosContainer';
+import CompletedTodosContainer from './CompletedTodosContainer';
 import NotFound from '../components/NotFound';
 import Header from '../components/ui/Header';
 import {
@@ -21,6 +22,7 @@ class App extends React.Component {
                 <Switch>
                   <Route exact path='/' component={TodosContainer}/>
                   <Route path='/deleted' component={DeletedTodosContainer}/>
+                  <Route path='/completed' component={CompletedTodosContainer}/>
                   <Route path='/notfound' component={NotFound}/>
                   <Redirect to='/notfound' />
                 </Switch>

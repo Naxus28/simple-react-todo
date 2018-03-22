@@ -3,6 +3,7 @@
 // (thus state could not be passed down as props or up in callbacks)
 let _todos = [];
 let _deletedTodos = [];
+let _completedTodos = [];
 
 let getTodoId = (todos) => {
   return todos.length 
@@ -22,11 +23,20 @@ let setDeletedTodos = (todo) => {
   _deletedTodos = [..._deletedTodos, todo];
 }
 
+let getCompletedTodos = () => _completedTodos;
+let setCompletedTodos = (todo) => {
+  todo = Object.assign({}, todo, {id: getTodoId(_completedTodos)});
+  _completedTodos = [..._completedTodos, todo];
+}
+
+
 
 export default {
   getTodoId,
   getTodos,
   setTodos,
   getDeletedTodos,
-  setDeletedTodos
+  setDeletedTodos,
+  getCompletedTodos,
+  setCompletedTodos
 }
