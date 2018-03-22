@@ -1,9 +1,11 @@
 // service used to share todos state across components 
 // that are not on the same component tree 
 // (thus state could not be passed down as props or up in callbacks)
-let _todos = [];
-let _deletedTodos = [];
-let _completedTodos = [];
+const TODOS = {
+  todos: [],
+  deleted: [],
+  completed: []
+};
 
 let getTodoId = (todos) => {
   return todos.length 
@@ -11,27 +13,28 @@ let getTodoId = (todos) => {
     : 1;
 };
 
-let getTodos = () => _todos;
-let setTodos = (todos) => _todos = [...todos];
+let getTodos = () => TODOS.todos;
+let setTodos = (todos) => TODOS.todos = [...todos];
 
-let getDeletedTodos = () => _deletedTodos;
-let setDeletedTodos = (todo) => {
-  // need to track deleted todo id in relation to
-  // deteled todos, not todos: one may delete todos and add more todos, 
-  // in which case different deleted todos could have the same id (todos id is generated based on arrya length)
-  todo = Object.assign({}, todo, {id: getTodoId(_deletedTodos)});
-  _deletedTodos = [..._deletedTodos, todo];
-}
+let getDeletedTodos = () => TODOS.deleted;
+let setDeletedTodos = (todo) => setTodosHelper('deleted', todo);
 
-let getCompletedTodos = () => _completedTodos;
+let getCompletedTodos = () => TODOS.completed;
 let setCompletedTodos = (todo) => {
   if (todo.completed) {
-    todo = Object.assign({}, todo, {id: getTodoId(_completedTodos)});
-    _completedTodos = [..._completedTodos, todo];
+    setTodosHelper('completed', todo);
   } else {
-    _completedTodos = _completedTodos.filter(completedTodo => completedTodo.id !== todo.id)
+    TODOS.completed = TODOS.completed.filter(completedTodo => completedTodo.id !== todo.id);
   }
-}
+};
+
+// need to track todo id in relation to the array in which it is contained
+let setTodosHelper = (todoType, todo) => {
+  let todos = TODOS[todoType];
+
+  todo = Object.assign({}, todo, {id: getTodoId(todos)});
+  TODOS[todoType] = [...todos, todo];
+};
 
 
 

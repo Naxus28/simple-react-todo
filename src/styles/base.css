@@ -1,6 +1,11 @@
-h1 {
+h1:not(.App-title) {
   margin-top: 20px;
+  margin-bottom: 20px;
   font-size: 24px;
+}
+
+h1 {
+  text-transform: uppercase;
 }
 
 ul {
@@ -25,11 +30,17 @@ li a {
   text-decoration: none;
 }
 
-p, 
 li {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
+p {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+
 
 .add-todo {
   margin-top: 20px;

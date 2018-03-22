@@ -80,7 +80,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="todos-container">
         <Button addTodo={this.handleAdd}/>
         <TodoList todos={this.state.todos}
                   handleAdd={this.handleAdd} 
