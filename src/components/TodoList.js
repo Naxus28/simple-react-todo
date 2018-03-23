@@ -2,9 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Todo from 'components/Todo';
 
-import 'styles/Todos.css';
-
-
 class TodoList extends React.Component {
   constructor(props) {
     super(props);     
@@ -28,12 +25,13 @@ class TodoList extends React.Component {
       <div className="todos-wrapper">
         <ol>
           {this.props.todos.map(todo => {
-            return  <li key={todo.id} >
-                      <Todo todo={todo} 
-                            todoId={todo.id} 
-                            toggleTodo={this.handleToggle}
-                            deleteTodo={this.handleDelete} />
-                    </li>
+            return !todo.deleted &&
+                     <li key={todo.id} >
+                        <Todo todo={todo} 
+                              todoId={todo.id} 
+                              toggleTodo={this.handleToggle}
+                              deleteTodo={this.handleDelete} />
+                      </li>
           })}
         </ol>
       </div>

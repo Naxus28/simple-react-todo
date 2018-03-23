@@ -1,50 +1,40 @@
+import _ from 'lodash';
+
 // service used to share todos state across components 
 // that are not on the same component tree 
 // (thus state could not be passed down as props or up in callbacks)
-const TODOS = {
-  todos: [],
-  deleted: [],
-  completed: []
-};
+let TODOS = []
 
-let getTodoId = (todos) => {
+
+let flagDeletedTodo = (deletedTodo) => {
+  // create new array and new obj to avoid mutation
+  let todosCopy = [...getTodos()];
+  deletedTodo = Object.assign({}, deletedTodo, {deleted: true});
+
+  let deletedIndex = _.findIndex(todosCopy, (todo) => todo.id === deletedTodo.id);
+  todosCopy.splice(deletedIndex, 1, deletedTodo);
+
+  setTodos(todosCopy);
+}
+
+let generateTodoId = (todos) => {
   return todos.length 
-    ? (todos[todos.length-1].id + 1) 
+    ? (TODOS[TODOS.length-1].id + 1) 
     : 1;
 };
 
-let getTodos = () => TODOS.todos;
-let setTodos = (todos) => TODOS.todos = [...todos];
+let getTodos = () => TODOS;
+let setTodos = (todos) => TODOS = [...todos];
 
-let getDeletedTodos = () => TODOS.deleted;
-let setDeletedTodos = (todo) => setTodosHelper('deleted', todo);
-
-let getCompletedTodos = () => TODOS.completed;
-let setCompletedTodos = (todo) => {
-  if (todo.completed) {
-    setTodosHelper('completed', todo);
-  } else {
-    let filteredTodos = TODOS.completed.filter(completedTodo => completedTodo.id !== todo.id);
-    TODOS.completed = filteredTodos;
-  }
-};
-
-// need to track todo id in relation to the array in which it is contained
-let setTodosHelper = (todoType, todo) => {
-  let todos = TODOS[todoType];
-
-  todo = Object.assign({}, todo, {id: getTodoId(todos)});
-  TODOS[todoType] = [...todos, todo];
-};
-
+let getDeletedTodos = () => TODOS.filter(todo => todo.deleted);
+let getCompletedTodos = () => TODOS.filter(todo => todo.completed);
 
 
 export default {
-  getTodoId,
+  flagDeletedTodo,
+  generateTodoId,
   getTodos,
   setTodos,
   getDeletedTodos,
-  setDeletedTodos,
   getCompletedTodos,
-  setCompletedTodos
 }
