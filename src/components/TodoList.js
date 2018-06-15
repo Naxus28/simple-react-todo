@@ -26,7 +26,7 @@ class TodoList extends React.Component {
         <ol>
           {this.props.todos.map(todo => {
             return !todo.deleted &&
-                     <li key={todo.id} >
+                      <li key={todo.id} >
                         <Todo todo={todo} 
                               todoId={todo.id} 
                               toggleTodo={this.handleToggle}

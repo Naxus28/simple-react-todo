@@ -17,7 +17,7 @@ class Todo extends React.Component {
     this.props.toggleTodo(todo.item, todoId);
   }
   
-  handleDelete () {
+  handleDelete() {
     this.props.deleteTodo(this.props.todo);
   }
   

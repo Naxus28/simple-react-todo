@@ -57,7 +57,7 @@ class TodosContainer extends React.Component {
   handleToggle(item, id) {
     /* ANOTHER OPTION INSTEAD OF MAP
      * let todosCopy = this.state.todos.slice();
-     * todosCopy[id].completed = !todosCopy[id].completed;
+     * todosCopy[id-1].completed = !todosCopy[id-1].completed;
     */
     this.setState({
       todos: this.state.todos.map(todo => {
