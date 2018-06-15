@@ -22,10 +22,10 @@ class App extends React.Component {
               <div className="App">
                 <Header />
                 <Switch>
-                  <Route exact path='/' component={TodosContainer}/>
-                  <Route path='/deleted' component={DeletedTodosContainer}/>
-                  <Route path='/completed' component={CompletedTodosContainer}/>
-                  <Route path='/404' component={NotFound}/>
+                  <Route exact path='/' component={TodosContainer} />
+                  <Route path='/deleted' component={DeletedTodosContainer} />
+                  <Route path='/completed' component={CompletedTodosContainer} />
+                  <Route path='/404' component={NotFound} />
                   <Redirect to='/404' />
                 </Switch>
               </div>

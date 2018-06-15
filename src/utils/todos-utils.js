@@ -1,10 +1,9 @@
-import _ from 'lodash';
-
 // service used to share todos state across components 
 // that are not on the same component tree 
-// (thus state could not be passed down as props or up in callbacks)
-let TODOS = []
 
+import _ from 'lodash';
+
+let TODOS = []
 
 let flagDeletedTodo = (deletedTodo) => {
   // create new array and new obj to avoid mutation

@@ -1,10 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import TodoList from 'components/TodoList.js';
 import Button from 'components/Button';
 import todosUtils from 'utils/todos-utils.js';
 
-class App extends React.Component {
+class TodosContainer extends React.Component {
   constructor(props) {
     super(props);
     this.handleAdd = this.handleAdd.bind(this);
@@ -79,7 +78,6 @@ class App extends React.Component {
       <div className="todos-container">
         <Button addTodo={this.handleAdd}/>
         <TodoList todos={this.state.todos}
-                  handleAdd={this.handleAdd} 
                   handleToggle={this.handleToggle}
                   handleDelete={this.handleDelete} />
       </div>
@@ -87,11 +85,5 @@ class App extends React.Component {
   }
 }
 
-TodoList.propTypes = {
-  todos: PropTypes.array.isRequired,
-  handleAdd: PropTypes.func.isRequired,
-  handleToggle: PropTypes.func.isRequired,
-  handleDelete: PropTypes.func.isRequired
-};
 
-export default App;
+export default TodosContainer;
