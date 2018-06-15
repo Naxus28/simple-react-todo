@@ -9,13 +9,19 @@ class TodosContainer extends React.Component {
     this.handleAdd = this.handleAdd.bind(this);
     this.handleToggle = this.handleToggle.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+
+    // preferable to set state in constructor than componentWillMount
+    // https://reactjs.org/docs/react-component.html#componentwillmount
+    this.state = {
+      todos: todosUtils.getTodos()
+    } 
   }
 
-  componentWillMount() {
-    this.setState({
-      todos: todosUtils.getTodos()
-    });
-  }
+  // componentWillMount() {
+  //   this.setState({
+  //     todos: todosUtils.getTodos()
+  //   });
+  // }
 
   componentWillUpdate(nextProps, nextState) {
     if (nextState.todos !== this.state.todos) {
@@ -70,7 +76,6 @@ class TodosContainer extends React.Component {
     this.setState({
       todos: todosUtils.getTodos()
     });
-
   }
 
   render() {
