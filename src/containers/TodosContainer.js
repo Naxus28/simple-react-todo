@@ -1,6 +1,6 @@
 import React from 'react';
 import TodoList from 'components/TodoList.js';
-import Button from 'components/Button';
+import Button from 'components/ui/Button';
 import todosUtils from 'utils/todos-utils.js';
 
 class TodosContainer extends React.Component {

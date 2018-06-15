@@ -15,7 +15,7 @@ class Button extends React.Component {
   }
   
   render() {
-    return  <div class="add-todo">
+    return  <div className="add-todo">
               <input type="text" 
                    id="add-todo" 
                    ref={node => this.input=node} />
